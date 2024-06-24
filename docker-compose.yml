@@ -1,0 +1,13 @@
+services:
+  authentication:
+    #env_file: .env
+    image: cergentis_api
+    build:
+      context: .
+      dockerfile: authentication/Dockerfile
+    ports:
+      - '8101:8000'
+    volumes:
+      - ./authentication:/authentication
+    restart: unless-stopped
+
