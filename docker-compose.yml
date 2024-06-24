@@ -1,7 +1,5 @@
 services:
   authentication:
-    #env_file: .env
-    image: cergentis_api
     build:
       context: .
       dockerfile: authentication/Dockerfile
@@ -9,5 +7,22 @@ services:
       - '8101:8000'
     volumes:
       - ./authentication:/authentication
-    restart: unless-stopped
+
+  client_1:
+    build:
+      context: .
+      dockerfile: client_1/Dockerfile
+    ports:
+      - '8102:8000'
+    volumes:
+      - ./client_1:/client
+
+  client_2:
+    build:
+      context: .
+      dockerfile: client_2/Dockerfile
+    ports:
+      - '8103:8000'
+    volumes:
+      - ./client_2:/client
 
